@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Result</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef1f6;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #7c2d12;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .sidebar button:hover {
+            background: white;
+            color: black;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 220px;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* CARD */
+
+        .card {
+
+            width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px gray;
+            text-align: center;
+
+        }
+
+        .pass {
+            color: green;
+            font-size: 20px;
+        }
+
+        .fail {
+            color: red;
+            font-size: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 15px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="sidebar">
+
+        <h2>🎓 Student</h2>
+
+        <button onclick="goHome()">
+            ⬅ Back
+        </button>
+
+    </div>
+
+
+
+    <div class="main">
+
+        <div class="card">
+
+            <h2>Result</h2>
+
+            <h3 id="scoreText"></h3>
+
+            <h2 id="status"></h2>
+
+            <button onclick="nextRound()">
+                Go to Assessment
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+
+        let score =
+            parseInt(
+                localStorage.getItem("score")
+            );
+
+        let total =
+            parseInt(
+                localStorage.getItem("total")
+            );
+
+        let level =
+            localStorage.getItem("level");
+
+
+        let passMark =
+            Math.ceil(total / 2);
+
+
+
+        document.getElementById("scoreText")
+            .innerText =
+            "Score : " +
+            score +
+            " / " +
+            total;
+
+
+
+        if (score >= passMark) {
+
+            document.getElementById("status")
+                .innerHTML =
+                "<span class='pass'>PASS</span>";
+
+
+
+            if (score >= passMark) {
+
+                if (level === "round1") {
+                    localStorage.setItem(
+                        "round1Pass", "yes"
+                    );
+                }
+
+                else if (level === "round2") {
+                    localStorage.setItem(
+                        "round2Pass", "yes"
+                    );
+                }
+
+            }
+
+        }
+        else {
+
+            document.getElementById("status")
+                .innerHTML =
+                "<span class='fail'>FAIL</span>";
+
+        }
+
+
+
+        function nextRound() {
+
+            location.href =
+                "assessment.html";
+
+        }
+
+
+        function goHome() {
+
+            location.href =
+                "studentdb.html";
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

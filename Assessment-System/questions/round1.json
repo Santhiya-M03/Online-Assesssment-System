@@ -1,0 +1,202 @@
+[
+  {
+    "question": "Find next number: 3, 6, 9, 12, ?",
+    "options": [
+      "14",
+      "15",
+      "16",
+      "18"
+    ],
+    "answer": "15"
+  },
+  {
+    "question": "If 5 men can do a work in 10 days, how many days for 10 men?",
+    "options": [
+      "5",
+      "10",
+      "15",
+      "20"
+    ],
+    "answer": "5"
+  },
+  {
+    "question": "Average of 10,20,30?",
+    "options": [
+      "15",
+      "20",
+      "25",
+      "30"
+    ],
+    "answer": "20"
+  },
+  {
+    "question": "Simple interest of 1000 at 10% for 2 years?",
+    "options": [
+      "100",
+      "200",
+      "300",
+      "400"
+    ],
+    "answer": "200"
+  },
+  {
+    "question": "Find odd one: 2,4,6,9,8",
+    "options": [
+      "2",
+      "4",
+      "6",
+      "9"
+    ],
+    "answer": "9"
+  },
+  {
+    "question": "Next: 1,4,9,16,?",
+    "options": [
+      "20",
+      "24",
+      "25",
+      "30"
+    ],
+    "answer": "25"
+  },
+  {
+    "question": "Probability of head in coin",
+    "options": [
+      "1",
+      "1/2",
+      "1/3",
+      "1/4"
+    ],
+    "answer": "1/2"
+  },
+  {
+    "question": "LCM of 4 and 6",
+    "options": [
+      "10",
+      "12",
+      "14",
+      "16"
+    ],
+    "answer": "12"
+  },
+  {
+    "question": "HCF of 12 and 18",
+    "options": [
+      "3",
+      "6",
+      "9",
+      "12"
+    ],
+    "answer": "6"
+  },
+  {
+    "question": "Speed = distance/time. Distance 60, time 2?",
+    "options": [
+      "20",
+      "30",
+      "40",
+      "50"
+    ],
+    "answer": "30"
+  },
+  {
+    "question": "Which is prime?",
+    "options": [
+      "9",
+      "15",
+      "17",
+      "21"
+    ],
+    "answer": "17"
+  },
+  {
+    "question": "Area of square side 6",
+    "options": [
+      "12",
+      "24",
+      "36",
+      "48"
+    ],
+    "answer": "36"
+  },
+  {
+    "question": "Perimeter of rectangle 4×6",
+    "options": [
+      "10",
+      "20",
+      "24",
+      "28"
+    ],
+    "answer": "20"
+  },
+  {
+    "question": "Find next: 2,6,18,54,?",
+    "options": [
+      "108",
+      "162",
+      "216",
+      "324"
+    ],
+    "answer": "162"
+  },
+  {
+    "question": "Boat speed 10, stream 2, downstream?",
+    "options": [
+      "8",
+      "12",
+      "10",
+      "6"
+    ],
+    "answer": "12"
+  },
+  {
+    "question": "Train 100m, speed 20m/s, time?",
+    "options": [
+      "5",
+      "10",
+      "15",
+      "20"
+    ],
+    "answer": "5"
+  },
+  {
+    "question": "50% of 120",
+    "options": [
+      "40",
+      "50",
+      "60",
+      "70"
+    ],
+    "answer": "60"
+  },
+  {
+    "question": "Binary of 5",
+    "options": [
+      "101",
+      "111",
+      "100",
+      "110"
+    ],
+    "answer": "101"
+  },
+  {
+    "question": "OOP stands for",
+    "options": [
+      "Object Oriented Programming",
+      "Only One Program",
+      "Over Object",
+      "None"
+    ],
+    "answer": "Object Oriented Programming"
+  },
+  {
+    "question": "Which is logical operator?",
+    "options": [
+      "+",
+      "&&",
+      "=",
+      "/"
+    ],
+    "answer": "&&"
+  }
+]

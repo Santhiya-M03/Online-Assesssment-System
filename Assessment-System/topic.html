@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef1f6;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #7c2d12;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .sidebar button:hover {
+            background: #ffffff;
+            color: black;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        /* CARDS */
+
+        .category-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category-card {
+            width: 200px;
+            background: rgb(211, 209, 209);
+            padding: 15px;
+            box-shadow: 0 0 5px gray;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+        <h2>🎓 Student</h2>
+        <button onclick="dashboard()">⬅️Back</button>
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+        <h1>Select Topic</h1>
+        <div id="topicsGrid" class="category-grid"></div>
+    </div>
+
+    <script>
+        let assessment = localStorage.getItem("assessment");
+        let topicsGrid = document.getElementById("topicsGrid");
+        let data = {
+            assessment1: [
+                "Percentage",
+                "ProfitLoss",
+                "TimeWork",
+                "BloodRelation",
+                "C Basics"
+            ],
+            assessment2: [
+                "Average",
+                "Probability",
+                "Series",
+                "OOP"
+            ],
+            assessment3: [
+                "SI",
+                "TSD",
+                "Logic",
+                "Python"
+            ]
+        };
+        if (data[assessment]) {
+            data[assessment].forEach(t => {
+                topicsGrid.innerHTML +=
+                    `<div class="category-card" onclick="selectTopic('${t}')"> 
+                        <h3>${t}</h3> 
+                    </div>`;
+            });
+
+        }
+
+        function selectTopic(t) {
+            localStorage.setItem("topic", t);
+            window.location.href = "instructions.html";
+        }
+        function dashboard() {
+            window.location.href = "studentdb.html";
+        }
+    </script>
+</body>
+
+</html>

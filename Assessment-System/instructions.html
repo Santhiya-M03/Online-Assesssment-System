@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructions</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef1f6;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #7c2d12;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .sidebar button:hover {
+            background: white;
+            color: black;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 220px;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* CARD */
+
+        .card {
+            width: 600px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            animation: fade 0.4s ease;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #7c2d12;
+        }
+
+        /* LIST */
+
+        ul {
+            line-height: 28px;
+        }
+
+        /* BUTTONS */
+
+        .btn {
+
+            padding: 10px 20px;
+            border: none;
+            margin: 10px 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+
+        }
+
+        .start {
+            background: #16a34a;
+            color: white;
+        }
+
+        .back {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* ANIMATION */
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+        <h2>🎓 Student</h2>
+        <button onclick="dashboard()">Dashboard</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+        <div class="card">
+            <h2>📄 Instructions</h2>
+            <p>Read each question carefully before answering</p>
+            <p>Each question has four options</p>
+            <p>Select the correct answer</p>
+            <p>Timer will run during the test</p>
+            <p>Your score will show after completion</p>
+
+            <button class="btn start" onclick="startQuiz()"> Start Quiz </button>
+            <button class="btn back" onclick="back()"> Back </button>
+        </div>
+    </div>
+
+    <script>
+        function startQuiz() {
+            window.location.href = "quiz.html";
+        }
+
+        function back() {
+            window.location.href = "topic.html";
+        }
+
+        function dashboard() {
+            window.location.href = "studentdb.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("loggedUser");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>

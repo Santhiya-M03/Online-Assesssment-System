@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef1f6;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #7c2d12;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .sidebar button:hover {
+            background: white;
+            color: black;
+        }
+
+        /* HEADER */
+
+        .header {
+            margin-left: 220px;
+            height: 60px;
+            background: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 5px gray;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 220px;
+            padding: 30px;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #7c2d12;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+        <h2>👨‍🏫 Teacher</h2>
+        <button onclick="dashboard()">Back</button>
+    </div>
+
+    <!-- HEADER -->
+
+    <div class="header">
+        <h3>Submissions</h3>
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+        <table>
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Score</th>
+                    <th>Total</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody id="table">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+
+        function dashboard() {
+            location.href = "teacherdb.html";
+        }
+        let reports = JSON.parse(localStorage.getItem("reports")) || [];
+        let table = document.getElementById("table");
+        reports.forEach(r => {
+            table.innerHTML +=
+                `<tr>
+                <td>${r.name}</td>
+                <td>${r.score}</td>
+                <td>${r.total}</td>
+                <td>${r.percentage}</td>
+            </tr>`;
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Quiz</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef1f6;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #7c2d12;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .sidebar button:hover {
+            background: white;
+            color: black;
+        }
+
+        /* HEADER */
+
+        .header {
+            margin-left: 220px;
+            height: 60px;
+            background: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 5px gray;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 220px;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* CARD */
+
+        .card {
+
+            width: 500px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #7c2d12;
+        }
+
+        /* INPUT */
+
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+
+        }
+
+        /* BUTTON */
+
+        .create {
+            background: #16a34a;
+            color: white;
+            border: none;
+            cursor: pointer;
+
+        }
+
+        .create:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+        <h2>👨‍🏫 Teacher</h2>
+        <button onclick="dashboard()">⬅️Back</button>
+    </div>
+
+    <!-- HEADER -->
+
+    <div class="header">
+        <h3>Create Quiz</h3>
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+        <div class="card">
+            <h2>Create Quiz</h2>
+            <select id="assessment">
+                <option>assessment1</option>
+                <option>assessment2</option>
+                <option>assessment3</option>
+            </select>
+            <select id="category">
+                <option>aptitude</option>
+                <option>reasoning</option>
+                <option>programming</option>
+            </select>
+            <select id="topic">
+                <option>Topic1</option>
+                <option>Topic2</option>
+                <option>Topic3</option>
+            </select>
+            <button class="create" onclick="create()"> Create Quiz </button>
+        </div>
+    </div>
+
+    <script>
+
+        function dashboard() {
+            location.href = "teacherdb.html";
+        }
+
+        function create() {
+            let a = document.getElementById("assessment").value;
+            let c = document.getElementById("category").value;
+            let t = document.getElementById("topic").value;
+            localStorage.setItem("assessment", a);
+            localStorage.setItem("category", c);
+            localStorage.setItem("topic", t);
+            alert("Quiz Created");
+        }
+
+    </script>
+</body>
+
+</html>

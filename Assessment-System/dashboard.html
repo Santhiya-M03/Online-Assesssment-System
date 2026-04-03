@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Assessment Dashboard</title>
+
+
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-container">
+
+        <header class="dashboard-header">
+
+            <h1>📊 Assessment Dashboard</h1>
+
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </header>
+
+        <div class="welcome-card">
+
+            <h2 id="welcomeUser">Welcome 👋</h2>
+            <p>Select a quiz category and test your skills.</p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+            <div class="category-card" onclick="selectCategory('aptitude')">
+                <h3> 🧮 Aptitude</h3>
+                <p>Test your quantitative skills</p>
+            </div>
+
+
+            <div class="category-card" onclick="selectCategory('reasoning')">
+                <h3>💭Logical Reasoning</h3>
+                <p>Improve analytical thinking</p>
+            </div>
+
+
+            <div class="category-card" onclick="selectCategory('programming')">
+                <h3>💻Programming</h3>
+                <p>Check coding knowledge</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        //  CHECK LOGIN FIRST (ADD HERE)
+        let user = JSON.parse(localStorage.getItem("loggedUser"));
+
+        if (!user) {
+            window.location.href = "login.html";
+        }
+
+        //  THEN USE USER DATA
+        document.getElementById("welcomeUser").innerText =
+            `Welcome ${user.username} 👋`;
+
+        function selectCategory(category) {
+
+            localStorage.setItem("category", category);
+
+            window.location.href = "assessment.html";
+
+        }
+
+
+    </script>
+</body>
+
+</html>

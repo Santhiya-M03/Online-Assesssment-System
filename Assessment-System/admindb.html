@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminDB</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef1f6;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #7c2d12;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .sidebar button:hover {
+            background: #ffffff;
+            color: black;
+        }
+
+
+        /* HEADER */
+
+        .header {
+            margin-left: 220px;
+            height: 60px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            box-shadow: 0 2px 5px gray;
+        }
+
+        .header span {
+            font-weight: bold;
+        }
+
+
+        /* MAIN */
+
+        .main {
+            margin-left: 220px;
+            padding: 30px;
+            text-align: center;
+        }
+
+
+        /* TITLE */
+
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+
+        /* WELCOME */
+
+        .welcomeBox {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+
+        /* CARDS */
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 220px;
+            background: rgb(244, 242, 242);
+            padding: 20px;
+            border-radius: 10px;
+
+        }
+
+        .card button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border: none;
+            background: #7c2d12;
+            color: white;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #ea580c;
+        }
+
+        .infoBox {
+            background: rgb(241, 239, 239);
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .infoBox {
+
+            padding: 15px;
+            margin: 15px;
+        }
+
+        .card h2 {
+
+            font-size: 28px;
+            color: #7c2d12;
+        }
+
+        .card {
+
+            width: 220px;
+            background: rgb(211, 211, 211);
+            padding: 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+            animation: fadeIn 0.6s ease;
+
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px gray;
+
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>👨‍💼 Admin</h2>
+        <button onclick="home()">🏠 Dashboard</button>
+        <button onclick="users()">👥 Manage Users</button>
+        <button onclick="teachers()">👩‍🏫 Teachers</button>
+        <button onclick="students()">🎓 Students</button>
+        <button onclick="assessment()">📝 Assessment</button>
+        <button onclick="reports()">📊 Reports</button>
+        <button onclick="profile()">👤 Profile</button>
+        <button onclick="logout()">🚪 Logout</button>
+
+    </div>
+    <!-- HEADER -->
+
+    <div class="header">
+        <span>Admin Dashboard</span>
+        <span id="headerUser"></span>
+    </div>
+    <!-- MAIN -->
+    <div class="main">
+        <h2>Admin Dashboard</h2>
+        <div class="infoBox">
+            <h3 id="welcomeAdmin"></h3>
+            <p id="dateTime"></p>
+        </div>
+        <div class="cards">
+            <div class="card">
+                <h3>Total Users</h3>
+                <h2 id="totalUsers">0</h2>
+            </div>
+            <div class="card">
+                <h3>Total Teachers</h3>
+                <h2 id="totalTeachers">0</h2>
+            </div>
+            <div class="card">
+                <h3>Total Students</h3>
+                <h2 id="totalStudents">0</h2>
+            </div>
+            <div class="card">
+                <h3>Total Reports</h3>
+                <h2 id="totalReports">0</h2>
+            </div>
+        </div>
+        <div class="infoBox">
+            <h3>Recent Activity</h3>
+            <p id="activity"></p>
+        </div>
+    </div>
+
+    <script>
+
+        let user = JSON.parse(localStorage.getItem("loggedUser"));
+        if (!user || user.role !== "admin") {
+            window.location.href = "login.html";
+        }
+        // ---------- HEADER NAME ----------
+
+        document.getElementById("headerUser").innerText = user.username;
+
+        // ---------- SIDEBAR FUN ----------
+
+        function home() {
+            location.reload();
+        }
+        function users() {
+            window.location.href = "manageuser.html";
+        }
+        function teachers() {
+            window.location.href = "teacher.html";
+        }
+        function students() {
+            window.location.href = "student.html";
+        }
+        function assessment() {
+            window.location.href = "assessment.html";
+        }
+        function reports() {
+            window.location.href = "report.html";
+        }
+        function profile() {
+            window.location.href = "profile.html";
+        }
+        function logout() {
+            localStorage.removeItem("loggedUser");
+            window.location.href = "login.html";
+        }
+        // ---------- DASHBOARD DATA ----------
+
+        let usersData = JSON.parse(localStorage.getItem("users")) || [];
+        let reportsData = JSON.parse(localStorage.getItem("reports")) || [];
+
+        let teacherCount = 0;
+        let studentCount = 0;
+
+        usersData.forEach(u => {
+            if (u.role === "teacher") teacherCount++;
+            if (u.role === "student") studentCount++;
+
+        });
+        // ---------- SET CARD VALUES ----------
+
+        document.getElementById("totalUsers").innerText = usersData.length;
+        document.getElementById("totalTeachers").innerText = teacherCount;
+        document.getElementById("totalStudents").innerText = studentCount;
+        document.getElementById("totalReports").innerText = reportsData.length;
+
+        // ---------- WELCOME TEXT ----------
+
+        document.getElementById("welcomeAdmin").innerText = "Welcome Admin : " + user.username;
+
+        // ---------- DATE TIME ----------
+
+        setInterval(() => {
+            let d = new Date();
+            document.getElementById("dateTime").innerText = d.toLocaleString();
+        }, 1000);
+
+        // ---------- RECENT ACTIVITY ----------
+
+        let act = document.getElementById("activity");
+        act.innerHTML = "";
+        reportsData.slice(-5).forEach(r => { act.innerHTML += "<p>" + r.name + " scored " + r.score + "</p>"; });
+
+    </script>
+
+</body>
+
+</html>

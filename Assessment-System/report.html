@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef1f6;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #7c2d12;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+        }
+
+        .sidebar button:hover {
+            background: #ffffff;
+            color: black;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 220px;
+            padding: 20px;
+        }
+
+        /* TABLE */
+
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #7c2d12;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <button onclick="go('admindb.html')"> ⬅️Back </button>
+    </div>
+
+    <div class="main">
+        <h2>Student Reports</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Total</th>
+                    <th>%</th>
+                </tr>
+            </thead>
+            <tbody id="list"></tbody>
+        </table>
+    </div>
+
+    <script>
+
+        let reports = JSON.parse(localStorage.getItem("reports")) || [];
+        let list = document.getElementById("list");
+        reports.forEach(r => {
+            list.innerHTML +=
+                `<tr>
+                <td>${r.name}</td>
+                <td>${r.score}</td>
+                <td>${r.total}</td>
+                <td>${r.percentage}</td>
+            </tr>`;
+        });
+
+        function go(p) { location.href = p; }
+        function logout() {
+            localStorage.removeItem("loggedUser");
+            location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>

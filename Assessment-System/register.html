@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            height: 100vh;
+            background: url("bg.jpg") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
+
+        
+
+        .box {
+            width: 360px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px black;
+            color: white;
+            z-index: 1;
+        }
+
+        
+
+        .brand {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .brand h1 {
+            margin: 0;
+            font-size: 35px;
+        }
+
+        .sub {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        
+
+        .inputBox {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .inputBox i {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .eye {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+
+        .inputBox input {
+            width: 300px;
+            padding: 10px 30px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            background:rgb(78, 75, 75);
+            color:gray;
+        }
+
+        .inputBox select {
+            width: 360px;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            background: rgb(78, 75, 75);
+            color:white;
+        }
+
+        
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e40af;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .error {
+            color: #ffb3b3;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        
+
+        .strength {
+            width: 100%;
+            height: 5px;
+            background: #444;
+            margin-top: 5px;
+        }
+
+        #bar {
+            height: 5px;
+            width: 0%;
+            background: red;
+            transition: 0.3s;
+        }
+
+        #strengthText {
+            font-size: 12px;
+            margin: 3px 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <div class="brand">
+            <h1>Online Assessment</h1>
+            <p class="sub">Create your account</p>
+        </div>
+        <div class="inputBox">
+            <i class="fa fa-user"></i>
+            <input id="username" placeholder="Username">
+        </div>
+
+        <div class="inputBox">
+            <i class="fa fa-envelope"></i>
+            <input id="email" placeholder="Email">
+        </div>
+
+        <!-- PASSWORD -->
+
+        <div class="inputBox">
+            <i class="fa fa-lock"></i>
+            <input id="password" type="password" placeholder="Password" onkeyup="checkStrength()">
+            <i class="fa fa-eye eye" onclick="toggle('password')"> </i>
+        </div>
+        <div class="strength">
+            <div id="bar"></div>
+        </div>
+
+        <p id="strengthText"></p>
+
+        <!-- CONFIRM -->
+
+        <div class="inputBox">
+            <i class="fa fa-lock"></i>
+            <input id="confirm" type="password" placeholder="Confirm Password">
+            <i class="fa fa-eye eye" onclick="toggle('confirm')"> </i>
+        </div>
+
+        <div class="inputBox">
+            <i class="fa fa-user-tag"></i>
+            <select id="role">
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select>
+        </div>
+
+        <p id="error" class="error"></p>
+
+        <button onclick="register()"> Register </button>
+
+        <div class="link">
+            <a href="login.html"> Login </a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function toggle(id) {
+            let x = document.getElementById(id);
+            if (x.type === "password")
+                x.type = "text";
+            else
+                x.type = "password";
+
+        }
+
+        function checkStrength() {
+            let pass = document.getElementById("password").value;
+            let bar = document.getElementById("bar");
+            let text = document.getElementById("strengthText");
+            let strength = 0;
+            if (pass.length > 5) strength++;
+            if (pass.match(/[A-Z]/)) strength++;
+            if (pass.match(/[0-9]/)) strength++;
+            if (pass.match(/[@#$%]/)) strength++;
+            if (strength == 1) {
+                bar.style.width = "25%";
+                bar.style.background = "red";
+                text.innerText = "Weak";
+
+            }
+
+            else if (strength == 2) {
+                bar.style.width = "50%";
+                bar.style.background = "orange";
+                text.innerText = "Medium";
+            }
+
+            else if (strength == 3) {
+                bar.style.width = "75%";
+                bar.style.background = "yellow";
+                text.innerText = "Good";
+            }
+
+            else if (strength >= 4) {
+                bar.style.width = "100%";
+                bar.style.background = "lime";
+                text.innerText = "Strong";
+            }
+
+            else {
+                bar.style.width = "0%";
+                text.innerText = "";
+            }
+
+        }
+
+        function register() {
+            let name = document.getElementById("username").value;
+            let email = document.getElementById("email").value;
+            let pass = document.getElementById("password").value;
+            let confirm = document.getElementById("confirm").value;
+            let role = document.getElementById("role").value;
+
+            if (pass !== confirm) {
+                document.getElementById("error").innerText = "Password not match";
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            users.push({
+                username: name,
+                email: email,
+                password: pass,
+                role: role
+            });
+
+            localStorage.setItem( "users",JSON.stringify(users) );
+            alert("Registered");
+            location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>

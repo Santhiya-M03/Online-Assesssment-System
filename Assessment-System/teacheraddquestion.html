@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddQ</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef1f6;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #7c2d12;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .sidebar button:hover {
+            background: white;
+            color: black;
+        }
+
+        /* HEADER */
+
+        .header {
+            margin-left: 220px;
+            height: 60px;
+            background: white;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 5px gray;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 220px;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* CARD */
+
+        .card {
+            width: 600px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #7c2d12;
+        }
+
+        /* INPUT */
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0;
+
+        }
+
+        /* BUTTON */
+
+        .save {
+            background: #16a34a;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .save:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+        <h2>👨‍🏫 Teacher</h2>
+        <button onclick="dashboard()">Back</button>
+    </div>
+
+    <!-- HEADER -->
+
+    <div class="header">
+        <h3>Add Question</h3>
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+        <div class="card">
+            <h2>Add Question</h2>
+            <select id="assessment">
+                <option>assessment1</option>
+                <option>assessment2</option>
+                <option>assessment3</option>
+            </select>
+            <select id="category">
+                <option>aptitude</option>
+                <option>reasoning</option>
+                <option>programming</option>
+            </select>
+            <input id="topic" placeholder="Topic">
+            <textarea id="question" placeholder="Question"></textarea>
+            <input id="o1" placeholder="Option 1">
+            <input id="o2" placeholder="Option 2">
+            <input id="o3" placeholder="Option 3">
+            <input id="o4" placeholder="Option 4">
+            <input id="answer" placeholder="Correct Answer">
+            <button class="save" onclick="save()"> Save Question </button>
+
+        </div>
+    </div>
+
+    <script>
+        function dashboard() {
+            location.href = "teacherdb.html";
+        }
+
+        function save() {
+            let a = document.getElementById("assessment").value;
+            let c = document.getElementById("category").value;
+            let t = document.getElementById("topic").value;
+            let q = document.getElementById("question").value;
+            let o1 = document.getElementById("o1").value;
+            let o2 = document.getElementById("o2").value;
+            let o3 = document.getElementById("o3").value;
+            let o4 = document.getElementById("o4").value;
+            let ans = document.getElementById("answer").value;
+            let key = a + "_" + c + "_" + t;
+            let arr = JSON.parse(localStorage.getItem(key)) || [];
+
+            arr.push({
+                question: q,
+                options: [o1, o2, o3, o4],
+                answer: ans
+            });
+            localStorage.setItem(key, JSON.stringify(arr));
+            alert("Saved");
+        }
+    </script>
+</body>
+
+</html>

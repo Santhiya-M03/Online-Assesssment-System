@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef1f6;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #7c2d12;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .sidebar button:hover {
+            background: #ffffff;
+            color: black;
+        }
+
+        /* HEADER */
+
+        .header {
+            margin-left: 220px;
+            height: 60px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            box-shadow: 0 2px 5px gray;
+        }
+
+        .header span {
+            font-weight: bold;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 220px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        /* TITLE */
+
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* WELCOME */
+
+        .welcomeBox {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 220px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 8px gray;
+        }
+
+        .card button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border: none;
+            background: #0f766e;
+            color: white;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #115e59;
+        }
+
+        .infoBox {
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .card h2 {
+            font-size: 28px;
+            color: #7c2d12;
+        }
+
+        .card {
+            width: 220px;
+            background: rgb(211, 211, 211);
+            padding: 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px gray;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+        <h2>👩‍🏫 Teacher</h2>
+        <button onclick="home()">🏠 Dashboard</button>
+        <button onclick="createQuiz()">📝 Create Quiz</button>
+        <button onclick="addQuestion()">➕ Add Question</button>
+        <button onclick="submissions()">📊 Submissions</button>
+        <button onclick="result()">📈 Results</button>
+        <button onclick="profile()">👤 Profile</button>
+        <button onclick="logout()">🚪 Logout</button>
+    </div>
+
+    <!-- HEADER -->
+
+    <div class="header">
+        <span>Teacher Dashboard</span>
+        <span id="headerUser"></span>
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+        <h2>Teacher Dashboard</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Welcome</h3>
+                <p id="tName"></p>
+            </div>
+
+            <div class="card">
+                <h3>Total Questions</h3>
+                <p id="qCount">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Topics</h3>
+                <p>9</p>
+            </div>
+        </div>
+
+        <div class="infoBox">
+            <h3>Teacher Info</h3>
+            <p>You can add questions</p>
+            <p>You can create quiz</p>
+            <p>You can view submissions</p>
+        </div>
+
+    </div>
+
+    <script>
+
+        let user = JSON.parse(localStorage.getItem("loggedUser"));
+        if (!user || user.role !== "teacher") {
+            window.location.href = "login.html";
+        }
+        document.getElementById("welcome").innerText = "Welcome " + user.username;
+        document.getElementById("headerUser").innerText = user.username;
+        let u = JSON.parse(localStorage.getItem("loggedUser"));
+        tName.innerText = u.username;
+
+        function home() {
+            window.location.href = "teacherdb.html";
+        }
+
+        function createQuiz() {
+            window.location.href = "createquiz.html";
+        }
+
+        function addQuestion() {
+            window.location.href = "teacheraddquestion.html";
+        }
+
+        function submissions() {
+            window.location.href = "submission.html";
+        }
+
+        function result() {
+            window.location.href = "result.html";
+        }
+
+        function profile() {
+            window.location.href = "profile.html";
+        }
+
+        function logout() {
+            localStorage.removeItem("loggedUser");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>

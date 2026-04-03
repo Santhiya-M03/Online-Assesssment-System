@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Assessment</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #eef1f6;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background: #7c2d12;
+            color: white;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+        }
+
+        .sidebar button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: none;
+            color: white;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .sidebar button:hover {
+            background: white;
+            color: black;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 220px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* GRID */
+
+        .grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* CARD */
+
+        .card {
+
+            width: 220px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px gray;
+            cursor: pointer;
+            transition: 0.3s;
+
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        /* LOCK */
+
+        .lock {
+            color: red;
+            font-size: 14px;
+        }
+
+        .pass {
+            color: green;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>🎓 Student</h2>
+
+        <button onclick="dashboard()">
+            ⬅ Back
+        </button>
+
+    </div>
+
+
+
+    <div class="main">
+
+        <h1>Select Round</h1>
+
+        <div class="grid">
+
+            <div class="card" onclick="selectRound('r1')">
+
+                <h3>Round 1</h3>
+                <p>Basic Test</p>
+
+                <div id="r1Status"></div>
+
+            </div>
+
+
+
+            <div class="card" onclick="selectRound('r2')">
+
+                <h3>Round 2</h3>
+                <p>Intermediate Test</p>
+
+                <div id="r2Status"></div>
+
+            </div>
+
+
+
+            <div class="card" onclick="selectRound('r3')">
+
+                <h3>Round 3</h3>
+                <p>Advanced Test</p>
+
+                <div id="r3Status"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        let r1 =
+            localStorage.getItem("round1Pass");
+
+        let r2 =
+            localStorage.getItem("round2Pass");
+
+
+
+        /* SHOW STATUS */
+
+        if (r1 == "yes")
+            document.getElementById("r1Status")
+                .innerHTML = "<span class='pass'>Passed</span>";
+
+        else
+            document.getElementById("r1Status")
+                .innerHTML = "<span class='lock'> 🔓 Not done</span>";
+
+
+
+        if (r1 != "yes")
+            document.getElementById("r2Status")
+                .innerHTML = "<span class='lock'> 🔒 Locked</span>";
+
+        else if (r2 == "yes")
+            document.getElementById("r2Status")
+                .innerHTML = "<span class='pass'> ✅ Passed</span>";
+
+        else
+            document.getElementById("r2Status")
+                .innerHTML = "Open";
+
+
+
+        if (r2 != "yes")
+            document.getElementById("r3Status")
+                .innerHTML = "<span class='lock'> 🔒 Locked</span>";
+
+        else
+            document.getElementById("r3Status")
+                .innerHTML = "Open";
+
+
+
+        /* CLICK */
+
+        function selectRound(r) {
+
+            let r1 =
+                localStorage.getItem("round1Pass");
+
+            let r2 =
+                localStorage.getItem("round2Pass");
+
+
+            if (r == "r1") {
+                localStorage.setItem("level", "round1");
+                location.href = "instructions.html";
+            }
+
+            else if (r == "r2") {
+
+                if (r1 === "yes") {
+                    localStorage.setItem("level", "round2");
+                    location.href = "instructions.html";
+                }
+                else {
+                    alert("Pass Round 1 first");
+                }
+
+            }
+
+            else if (r == "r3") {
+
+                if (r2 === "yes") {
+                    localStorage.setItem("level", "round3");
+                    location.href = "instructions.html";
+                }
+                else {
+                    alert("Pass Round 2 first");
+                }
+
+            }
+
+        }
+
+
+
+        function dashboard() {
+            location.href = "studentdb.html";
+        }
+
+    </script>
+
+</body>
+
+</html>
