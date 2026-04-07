@@ -13,7 +13,7 @@
             background: #eef1f6;
         }
 
-        /* SIDEBAR */
+        
         .sidebar {
             width: 220px;
             height: 100vh;
@@ -46,7 +46,7 @@
         }
 
 
-        /* HEADER */
+    
 
         .header {
             margin-left: 220px;
@@ -64,7 +64,7 @@
         }
 
 
-        /* MAIN */
+        
 
         .main {
             margin-left: 220px;
@@ -73,7 +73,7 @@
         }
 
 
-        /* TITLE */
+        
 
         .title {
             font-size: 26px;
@@ -82,7 +82,7 @@
         }
 
 
-        /* WELCOME */
+        
 
         .welcomeBox {
             display: inline-block;
@@ -92,7 +92,7 @@
         }
 
 
-        /* CARDS */
+        
 
         .cards {
             display: flex;
@@ -172,7 +172,7 @@
 </head>
 
 <body>
-    <!-- SIDEBAR -->
+    
     <div class="sidebar">
         <h2>👨‍💼 Admin</h2>
         <button onclick="home()">🏠 Dashboard</button>
@@ -185,13 +185,13 @@
         <button onclick="logout()">🚪 Logout</button>
 
     </div>
-    <!-- HEADER -->
+    
 
     <div class="header">
         <span>Admin Dashboard</span>
         <span id="headerUser"></span>
     </div>
-    <!-- MAIN -->
+    
     <div class="main">
         <h2>Admin Dashboard</h2>
         <div class="infoBox">
@@ -228,11 +228,11 @@
         if (!user || user.role !== "admin") {
             window.location.href = "login.html";
         }
-        // ---------- HEADER NAME ----------
+        
 
         document.getElementById("headerUser").innerText = user.username;
 
-        // ---------- SIDEBAR FUN ----------
+        
 
         function home() {
             location.reload();
@@ -259,7 +259,7 @@
             localStorage.removeItem("loggedUser");
             window.location.href = "login.html";
         }
-        // ---------- DASHBOARD DATA ----------
+        
 
         let usersData = JSON.parse(localStorage.getItem("users")) || [];
         let reportsData = JSON.parse(localStorage.getItem("reports")) || [];
@@ -272,25 +272,25 @@
             if (u.role === "student") studentCount++;
 
         });
-        // ---------- SET CARD VALUES ----------
+        
 
         document.getElementById("totalUsers").innerText = usersData.length;
         document.getElementById("totalTeachers").innerText = teacherCount;
         document.getElementById("totalStudents").innerText = studentCount;
         document.getElementById("totalReports").innerText = reportsData.length;
 
-        // ---------- WELCOME TEXT ----------
+        
 
         document.getElementById("welcomeAdmin").innerText = "Welcome Admin : " + user.username;
 
-        // ---------- DATE TIME ----------
+        
 
         setInterval(() => {
             let d = new Date();
             document.getElementById("dateTime").innerText = d.toLocaleString();
         }, 1000);
 
-        // ---------- RECENT ACTIVITY ----------
+        
 
         let act = document.getElementById("activity");
         act.innerHTML = "";

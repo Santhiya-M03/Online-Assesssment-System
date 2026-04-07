@@ -15,7 +15,7 @@
             background: #eef1f6;
         }
 
-        /* SIDEBAR */
+    
 
         .sidebar {
             width: 220px;
@@ -49,7 +49,7 @@
         }
 
 
-        /* HEADER */
+        
 
         .header {
             margin-left: 220px;
@@ -66,15 +66,14 @@
             font-weight: bold;
         }
 
-        /* MAIN */
-
+        
         .main {
             margin-left: 220px;
             padding: 30px;
             text-align: center;
         }
 
-        /* TITLE */
+    
 
         .title {
             font-size: 26px;
@@ -82,7 +81,7 @@
             margin-bottom: 10px;
         }
 
-        /* WELCOME */
+        
 
         .welcomeBox {
             display: inline-block;
@@ -91,7 +90,7 @@
             font-weight: bold;
         }
 
-        /* CARDS */
+    
 
         .cards {
             display: flex;
@@ -169,7 +168,7 @@
 </head>
 
 <body>
-    <!-- SIDEBAR -->
+    
 
     <div class="sidebar">
         <h2>🎓 Student</h2>
@@ -181,14 +180,14 @@
 
     </div>
 
-    <!-- HEADER -->
+
 
     <div class="header">
         <span>Student Dashboard</span>
         <span id="headerUser"></span>
     </div>
 
-    <!-- MAIN -->
+    
 
     <div class="main">
         <h2>Student Dashboard</h2>
@@ -219,19 +218,19 @@
     </div>
     <script>
 
-        // ---------- LOGIN CHECK ----------
+        
 
         let user = JSON.parse(localStorage.getItem("loggedUser"));
         if (!user || user.role !== "student") {
             window.location.href = "login.html";
         }
 
-        // ---------- HEADER NAME ----------
+        
 
         document.getElementById("headerUser").innerText = user.username;
 
 
-        // ---------- SIDEBAR FUNCTIONS ----------
+        
 
         function home() {
             location.reload();
@@ -253,23 +252,23 @@
             window.location.href = "login.html";
         }
 
-        // ---------- DASHBOARD DATA ----------
+        
 
         let reports = JSON.parse(localStorage.getItem("reports")) || [];
 
-        // show name
+        
 
         document.getElementById("sName").innerText = user.username;
 
-        // filter student reports
+        
 
         let myReports = reports.filter(r => r.name === user.username);
 
-        // attempts count
+        
 
         document.getElementById("attempt").innerText = myReports.length;
 
-        // last score
+        
 
         if (myReports.length > 0) {
             document.getElementById("lastScore").innerText = myReports[myReports.length - 1].score;
