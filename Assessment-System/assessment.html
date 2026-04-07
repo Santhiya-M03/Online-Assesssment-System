@@ -14,8 +14,6 @@
             background: #eef1f6;
         }
 
-
-
         .sidebar {
             width: 220px;
             height: 100vh;
@@ -46,15 +44,11 @@
             color: black;
         }
 
-        
-
         .main {
             margin-left: 220px;
             padding: 40px;
             text-align: center;
         }
-
-    
 
         .grid {
             display: flex;
@@ -62,8 +56,6 @@
             gap: 20px;
             flex-wrap: wrap;
         }
-
-        
 
         .card {
 
@@ -107,8 +99,6 @@
 
     </div>
 
-
-
     <div class="main">
 
         <h1>Select Round</h1>
@@ -124,8 +114,6 @@
 
             </div>
 
-
-
             <div class="card" onclick="selectRound('r2')">
 
                 <h3>Round 2</h3>
@@ -134,8 +122,6 @@
                 <div id="r2Status"></div>
 
             </div>
-
-
 
             <div class="card" onclick="selectRound('r3')">
 
@@ -150,8 +136,6 @@
 
     </div>
 
-
-
     <script>
 
         let r1 =
@@ -159,10 +143,6 @@
 
         let r2 =
             localStorage.getItem("round2Pass");
-
-
-
-        
 
         if (r1 == "yes")
             document.getElementById("r1Status")
@@ -187,7 +167,6 @@
                 .innerHTML = "Open";
 
 
-
         if (r2 != "yes")
             document.getElementById("r3Status")
                 .innerHTML = "<span class='lock'> 🔒 Locked</span>";
@@ -196,9 +175,6 @@
             document.getElementById("r3Status")
                 .innerHTML = "Open";
 
-
-
-        
 
         function selectRound(r) {
 
@@ -239,7 +215,6 @@
             }
 
         }
-
 
 
         function dashboard() {
